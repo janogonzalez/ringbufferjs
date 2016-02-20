@@ -27,8 +27,8 @@ ring.enq(10);
 ring.enq(5);
 ring.enq(1); // 10 will be discarded
 ring.size(); // 2
-ring.peek(); // 10
-ring.deq(); // 10
+ring.peek(); // 5
+ring.deq(); // 5
 ring.size(); // 1
 ```
 
