@@ -104,6 +104,19 @@ describe('RingBuffer()', function() {
         expect(buffer.enq('valentina')).to.be(2);
         expect(buffer.enq('fran')).to.be(2);
       });
+
+      it('triggers a evicted element callback', function() {
+        var hit = 0;
+        function evictedCb(evicted) {
+          expect(evicted).to.be('jano');
+          ++hit;
+        }
+        var buffer = new RingBuffer(2, evictedCb);
+        expect(buffer.enq('jano')).to.be(1);
+        expect(buffer.enq('valentina')).to.be(2);
+        expect(buffer.enq('fran')).to.be(2);
+        expect(hit).to.be(1);
+      });
     });
   });
 
