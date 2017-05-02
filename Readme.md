@@ -51,6 +51,11 @@ Returns the capacity of the ring buffer.
 Dequeues the top element of the ring buffer.
 Throws an `Error` when the buffer is empty.
 
+### RingBuffer#deqN(count)
+
+Dequeues `count` elements from the top of the ring buffer and returns them.
+Throws an `Error` if there are not enough elements in the buffer.
+
 ### RingBuffer#enq(element)
 
 Enqueues the `element` at the end of the ring buffer and returns its new size.
@@ -68,6 +73,11 @@ Returns whether the ring buffer is full or not.
 
 Peeks at the top element of the ring buffer.
 Throws an `Error` when the buffer is empty.
+
+### RingBuffer#peekN(count)
+
+Returns `count` elements from the top of the ring buffer.
+Throws an `Error` if there are not enough elements in the buffer.
 
 ### RingBuffer#size()
 
