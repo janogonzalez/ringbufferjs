@@ -7,15 +7,19 @@ module.exports = RingBuffer;
  * Initializes a new empty `RingBuffer` with the given `capacity`, when no
  * value is provided uses the default capacity (50).
  *
+ * If provided, `evictedCb` gets run with any evicted elements.
+ *
  * @param {capacity}
+ * @param [evictedCb]
  * @return {RingBuffer}
  * @api public
  */
-function RingBuffer(capacity) {
+function RingBuffer(capacity, evictedCb) {
   this._elements = new Array(capacity || 50);
   this._first = 0;
   this._last = 0;
   this._size = 0;
+  this._evictedCb = evictedCb;
 }
 
 /**
@@ -86,9 +90,13 @@ RingBuffer.prototype.deq = function() {
  */
 RingBuffer.prototype.enq = function(element) {
   this._end = (this._first + this.size()) % this.capacity();
+  var full = this.isFull()
+  if (full && this._evictedCb) {
+    this._evictedCb(this._elements[this._end]);
+  }
   this._elements[this._end] = element;
 
-  if (this.isFull()) {
+  if (full) {
     this._first = (this._first + 1) % this.capacity();
   } else {
     this._size++;
