@@ -1,6 +1,6 @@
 {
   "name": "ringbufferjs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "a simple ring buffer data structure",
   "author": "Jano González <info@janogonzalez.com>",
   "devDependencies": {
@@ -9,8 +9,7 @@
   },
   "readmeFilename": "README.md",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "test": "mocha"
   },
