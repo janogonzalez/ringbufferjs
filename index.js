@@ -66,6 +66,25 @@ RingBuffer.prototype.peek = function() {
 };
 
 /**
+ * Peeks at multiple elements in the queue.
+ *
+ * @return {Array}
+ * @throws {Error} when there are not enough elements in the buffer.
+ * @api public
+ */
+RingBuffer.prototype.peekN = function(count) {
+  if (count > this._size) throw new Error('Not enough elements in RingBuffer');
+
+  var end = Math.min(this._first + count, this.capacity());
+  var firstHalf = this._elements.slice(this._first, end);
+  if (end < this.capacity()) {
+    return firstHalf;
+  }
+  var secondHalf = this._elements.slice(0, count - firstHalf.length);
+  return firstHalf.concat(secondHalf);
+};
+
+/**
  * Dequeues the top element of the queue.
  *
  * @return {Object}
@@ -79,6 +98,22 @@ RingBuffer.prototype.deq = function() {
   this._first = (this._first + 1) % this.capacity();
 
   return element;
+};
+
+/**
+ * Dequeues multiple elements of the queue.
+ *
+ * @return {Array}
+ * @throws {Error} when there are not enough elements in the buffer.
+ * @api public
+ */
+RingBuffer.prototype.deqN = function(count) {
+  var elements = this.peekN(count);
+
+  this._size -= count;
+  this._first = (this._first + count) % this.capacity();
+
+  return elements;
 };
 
 /**
