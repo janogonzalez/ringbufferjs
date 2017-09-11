@@ -1,6 +1,6 @@
 {
   "name": "ringbufferjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a simple ring buffer data structure",
   "author": "Jano González <info@janogonzalez.com>",
   "devDependencies": {
