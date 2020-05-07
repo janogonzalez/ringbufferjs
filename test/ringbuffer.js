@@ -1,3 +1,6 @@
+var expect = require('expect.js');
+var RingBuffer = require('..');
+
 describe('RingBuffer()', function() {
   it('returns an new RingBuffer', function() {
     expect(new RingBuffer()).to.be.a(RingBuffer);

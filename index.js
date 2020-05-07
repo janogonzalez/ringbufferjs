@@ -9,8 +9,8 @@ module.exports = RingBuffer;
  *
  * If provided, `evictedCb` gets run with any evicted elements.
  *
- * @param {capacity}
- * @param [evictedCb]
+ * @param {Number}
+ * @param {Function}
  * @return {RingBuffer}
  * @api public
  */
