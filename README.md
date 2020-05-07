@@ -1,5 +1,8 @@
 # ringbuffer.js
 
+[![Build Status](https://travis-ci.com/janogonzalez/ringbufferjs.svg?branch=master)](
+  https://travis-ci.com/janogonzalez/ringbufferjs)
+
 A simple ring buffer data structure for Node.js.
 
 ## Installation
@@ -26,52 +29,57 @@ ring.size(); // 1
 
 ## API
 
-### RingBuffer()
+### `RingBuffer()`
 
 Initializes a new empty `RingBuffer` with the default capacity (50).
 
-### RingBuffer(capacity)
+### `RingBuffer(capacity)`
 
 Initializes a new empty `RingBuffer` with the given `capacity`.
 
-### RingBuffer#capacity()
+### `RingBuffer(capacity, evictedCb)`
+
+Initializes a new empty `RingBuffer` with the given `capacity` which will
+execute the provided `evictedCb` when an element is evicted.
+
+### `RingBuffer#capacity()`
 
 Returns the capacity of the ring buffer.
 
-### RingBuffer#deq()
+### `RingBuffer#deq()`
 
 Dequeues the top element of the ring buffer.
 Throws an `Error` when the buffer is empty.
 
-### RingBuffer#deqN(count)
+### `RingBuffer#deqN(count)`
 
 Dequeues `count` elements from the top of the ring buffer and returns them.
 Throws an `Error` if there are not enough elements in the buffer.
 
-### RingBuffer#enq(element)
+### `RingBuffer#enq(element)`
 
 Enqueues the `element` at the end of the ring buffer and returns its new size.
 When the buffer is full the oldest element is discarded.
 
-### RingBuffer#isEmpty()
+### `RingBuffer#isEmpty()`
 
 Returns whether the ring buffer is empty or not.
 
-### RingBuffer#isFull()
+### `RingBuffer#isFull()`
 
 Returns whether the ring buffer is full or not.
 
-### RingBuffer#peek()
+### `RingBuffer#peek()`
 
 Peeks at the top element of the ring buffer.
 Throws an `Error` when the buffer is empty.
 
-### RingBuffer#peekN(count)
+### `RingBuffer#peekN(count)`
 
 Returns `count` elements from the top of the ring buffer.
 Throws an `Error` if there are not enough elements in the buffer.
 
-### RingBuffer#size()
+### `RingBuffer#size()`
 
 Returns the size of the ring buffer.
 
