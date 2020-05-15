@@ -8,7 +8,7 @@ A simple ring buffer data structure for Node.js.
 ## Installation
 
 ```
-$ npm install ringbufferjs
+npm install ringbufferjs
 ```
 
 ## Example
@@ -86,8 +86,8 @@ Returns the size of the ring buffer.
 ## Testing
 
 ```
-$ npm install
-$ npm test
+npm install
+npm test
 ```
 
 ## Licence
